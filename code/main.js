@@ -65,7 +65,6 @@ window.addEventListener('resize', () => {
 });
 
 // ===== SERVICE CARDS ANIMATION =====
-// ===== SERVICE CARDS ANIMATION =====
 const cards = document.querySelectorAll('.service-card');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -90,5 +89,3 @@ setTimeout(() => {
     card.style.transform = 'translateY(0)';
   });
 }, 1000);
-
-});
