@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Appointment | Shashi Homoeopathy Lucknow</title>
+  <meta name="description" content="Book an appointment with Dr. Vikas Rai at Shashi Homoeopathy Lucknow. Easy online booking available."/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="image/logo.png"/>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <img src="image/logo.png" alt="Shashi Homoeopathy Logo" class="logo"/>
+      <div class="clinic-name">
+        <h1>Shashi Homoeopathy</h1>
+        <p>A Solid Foundation For Your Health</p>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="appointment.html">Appointment</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PAGE BANNER -->
+  <section class="page-banner">
+    <h2>Book an Appointment</h2>
+    <p>Fill the form below and we'll confirm your slot!</p>
+  </section>
+
+  <!-- APPOINTMENT FORM -->
+  <section class="appointment-section">
+    <div class="appointment-inner">
+
+      <!-- LEFT — FORM -->
+      <div class="appointment-form-wrap">
+        <h2>Patient Details</h2>
+
+        <div class="form-group">
+          <label>Full Name *</label>
+          <input type="text" id="apt-name" placeholder="Enter your full name"/>
+        </div>
+
+        <div class="form-group">
+          <label>Phone / WhatsApp Number *</label>
+          <input type="tel" id="apt-phone" placeholder="Enter your phone number"/>
+        </div>
+
+        <div class="form-group">
+          <label>Age *</label>
+          <input type="number" id="apt-age" placeholder="Enter your age"/>
+        </div>
+
+        <div class="form-group">
+          <label>Gender *</label>
+          <select id="apt-gender">
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Preferred Date *</label>
+          <input type="date" id="apt-date"/>
+        </div>
+
+        <div class="form-group">
+          <label>Preferred Time *</label>
+          <select id="apt-time">
+            <option value="">Select Time Slot</option>
+            <option value="Morning (10:30 AM - 2:00 PM)">Morning (10:30 AM - 2:00 PM)</option>
+            <option value="Evening (5:30 PM - 9:00 PM)">Evening (5:30 PM - 9:00 PM)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Health Problem / Chief Complaint *</label>
+          <textarea id="apt-problem" rows="4" placeholder="Describe your health problem briefly..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>How did you hear about us?</label>
+          <select id="apt-source">
+            <option value="">Select</option>
+            <option value="Google Search">Google Search</option>
+            <option value="Friend/Family">Friend / Family</option>
+            <option value="Social Media">Social Media</option>
+            <option value="Walked in">Walked in</option>
+          </select>
+        </div>
+
+        <button class="btn" onclick="bookAppointment()">
+          📅 Book Appointment via WhatsApp
+        </button>
+
+      </div>
+
+      <!-- RIGHT — INFO -->
+      <div class="appointment-info">
+        <h2>Clinic Information</h2>
+
+        <div class="apt-info-card">
+          <h3>🕐 Clinic Timings</h3>
+          <p>Morning: 10:30 AM — 2:00 PM</p>
+          <p>Evening: 5:30 PM — 9:00 PM</p>
+          <p>Monday to Saturday</p>
+        </div>
+
+        <div class="apt-info-card">
+          <h3>📍 Location</h3>
+          <p>Chhoti Nahar, Bhola Khera,<br/>Manas Nagar, Lucknow — 226023</p>
+        </div>
+
+        <div class="apt-info-card">
+          <h3>📞 Call Us</h3>
+          <p><a href="tel:8887222470">8887222470</a></p>
+          <p><a href="tel:9179462348">9179462348</a></p>
+        </div>
+
+        <div class="apt-info-card">
+          <h3>💰 Consultation Fee</h3>
+          <p>₹200 per consultation</p>
+        </div>
+
+        <a href="https://wa.me/918887222470" class="btn whatsapp-btn" target="_blank">
+          💬 Direct WhatsApp
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT STRIP -->
+  <section class="contact-strip">
+    <p>📍 Chhoti Nahar, Bhola Khera, Manas Nagar, Lucknow</p>
+    <p>📞 <a href="tel:8887222470">8887222470</a> | <a href="tel:9179462348">9179462348</a></p>
+    <p>🕐 10:30 AM - 2:00 PM & 5:30 PM - 9:00 PM</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Shashi Homoeopathy | Dr. Vikas Rai | Lucknow</p>
+    <p>Email: shashihomoeopathy@gmail.com</p>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    function bookAppointment() {
+      const name = document.getElementById('apt-name').value.trim();
+      const phone = document.getElementById('apt-phone').value.trim();
+      const age = document.getElementById('apt-age').value.trim();
+      const gender = document.getElementById('apt-gender').value;
+      const date = document.getElementById('apt-date').value;
+      const time = document.getElementById('apt-time').value;
+      const problem = document.getElementById('apt-problem').value.trim();
+      const source = document.getElementById('apt-source').value;
+
+      if (!name || !phone || !age || !gender || !date || !time || !problem) {
+        alert('Please fill all required fields marked with *');
+        return;
+      }
+
+      const message = 
+`🏥 *New Appointment Request*
+*Shashi Homoeopathy*
+
+👤 *Name:* ${name}
+📞 *Phone:* ${phone}
+🎂 *Age:* ${age}
+⚧ *Gender:* ${gender}
+📅 *Date:* ${date}
+🕐 *Time:* ${time}
+🤒 *Problem:* ${problem}
+📣 *Source:* ${source || 'Not specified'}
+
+_Please confirm the appointment._`;
+
+      const url = `https://wa.me/918887222470?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    }
+  </script>
+
+</body>
+</html>
+
+
