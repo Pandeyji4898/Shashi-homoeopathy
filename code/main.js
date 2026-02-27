@@ -125,7 +125,7 @@ if (whyUs) {
         <p>Conditions Treated</p>
       </div>
       <div class="counter-item">
-        <h3 class="counter" data-target="200">0</h3>
+        <h3 class="counter" data-target="350">0</h3>
         <p>Consultation Fee ₹</p>
       </div>
     </div>
