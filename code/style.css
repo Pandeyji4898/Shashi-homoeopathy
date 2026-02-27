@@ -864,6 +864,29 @@ footer {
 }
 
 
+/* ===== COUNTERS SECTION ===== */
+.counters-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  padding: 50px 30px;
+  background: #fff;
+  text-align: center;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.counter-item h3 {
+  font-size: 2.5rem;
+  color: #c0392b;
+  font-weight: 800;
+}
+
+.counter-item p {
+  color: #555;
+  font-size: 0.95rem;
+  margin-top: 5px;
+}
 
 
 

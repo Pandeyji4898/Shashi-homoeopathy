@@ -1,13 +1,3 @@
-// ===== SMOOTH SCROLL =====
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute('href')).scrollIntoView({
-      behavior: 'smooth'
-    });
-  });
-});
-
 // ===== STICKY HEADER SHADOW =====
 window.addEventListener('scroll', () => {
   const header = document.querySelector('header');
@@ -36,7 +26,6 @@ const nav = document.querySelector('nav');
 const headerInner = document.querySelector('.header-inner');
 headerInner.insertBefore(navToggle, nav);
 
-// Show toggle button on mobile
 if (window.innerWidth <= 768) {
   navToggle.style.display = 'block';
   nav.style.display = 'none';
@@ -64,28 +53,156 @@ window.addEventListener('resize', () => {
   }
 });
 
-// ===== SERVICE CARDS ANIMATION =====
-const cards = document.querySelectorAll('.service-card');
-const observer = new IntersectionObserver((entries) => {
+// ===== 1. FADE IN SECTIONS ON SCROLL =====
+const fadeElements = document.querySelectorAll('section');
+fadeElements.forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(30px)';
+  el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+});
+
+const fadeObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.style.opacity = '1';
       entry.target.style.transform = 'translateY(0)';
+      fadeObserver.unobserve(entry.target);
     }
   });
 }, { threshold: 0.1 });
 
-cards.forEach(card => {
-  card.style.opacity = '0';
-  card.style.transform = 'translateY(20px)';
-  card.style.transition = 'all 0.6s ease';
-  observer.observe(card);
+fadeElements.forEach(el => fadeObserver.observe(el));
+
+// ===== 2. TYPING EFFECT ON HOMEPAGE HEADING =====
+const heroHeading = document.querySelector('.hero-text h2');
+if (heroHeading) {
+  const text = heroHeading.textContent;
+  heroHeading.textContent = '';
+  heroHeading.style.borderRight = '3px solid #c0392b';
+  let i = 0;
+  const typeInterval = setInterval(() => {
+    heroHeading.textContent += text[i];
+    i++;
+    if (i >= text.length) {
+      clearInterval(typeInterval);
+      setTimeout(() => {
+        heroHeading.style.borderRight = 'none';
+      }, 500);
+    }
+  }, 60);
+}
+
+// ===== 3. COUNTER ANIMATION =====
+function animateCounter(el, target, duration = 2000) {
+  let start = 0;
+  const step = target / (duration / 16);
+  const timer = setInterval(() => {
+    start += step;
+    if (start >= target) {
+      el.textContent = target + '+';
+      clearInterval(timer);
+    } else {
+      el.textContent = Math.floor(start) + '+';
+    }
+  }, 16);
+}
+
+// Add counters section to homepage if why-us section exists
+const whyUs = document.querySelector('.why-us');
+if (whyUs) {
+  const countersHTML = `
+    <div class="counters-section">
+      <div class="counter-item">
+        <h3 class="counter" data-target="7">0</h3>
+        <p>Years Experience</p>
+      </div>
+      <div class="counter-item">
+        <h3 class="counter" data-target="1000">0</h3>
+        <p>Happy Patients</p>
+      </div>
+      <div class="counter-item">
+        <h3 class="counter" data-target="12">0</h3>
+        <p>Conditions Treated</p>
+      </div>
+      <div class="counter-item">
+        <h3 class="counter" data-target="200">0</h3>
+        <p>Consultation Fee ₹</p>
+      </div>
+    </div>
+  `;
+  whyUs.insertAdjacentHTML('afterend', countersHTML);
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const counters = entry.target.querySelectorAll('.counter');
+        counters.forEach(counter => {
+          const target = parseInt(counter.getAttribute('data-target'));
+          animateCounter(counter, target);
+        });
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const countersSection = document.querySelector('.counters-section');
+  if (countersSection) counterObserver.observe(countersSection);
+}
+
+// ===== 4. SMOOTH PAGE TRANSITIONS =====
+document.body.style.opacity = '0';
+document.body.style.transition = 'opacity 0.5s ease';
+
+window.addEventListener('load', () => {
+  document.body.style.opacity = '1';
 });
 
-// Fallback — show cards after 1 second if observer fails
-setTimeout(() => {
-  cards.forEach(card => {
-    card.style.opacity = '1';
-    card.style.transform = 'translateY(0)';
-  });
-}, 1000);
+document.querySelectorAll('a').forEach(link => {
+  if (link.href && link.href.includes('.html') &&
+      !link.href.includes('wa.me') &&
+      !link.href.includes('tel:') &&
+      !link.href.includes('mailto:')) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = this.href;
+      document.body.style.opacity = '0';
+      setTimeout(() => {
+        window.location.href = href;
+      }, 400);
+    });
+  }
+});
+
+// ===== FLOATING WHATSAPP BUTTON =====
+const waButton = document.createElement('a');
+waButton.href = 'https://wa.me/918887222470';
+waButton.target = '_blank';
+waButton.innerHTML = '💬';
+waButton.style.cssText = `
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #25D366;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  box-shadow: 0 5px 20px rgba(37,211,102,0.4);
+  z-index: 9999;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+`;
+
+waButton.addEventListener('mouseover', () => {
+  waButton.style.transform = 'scale(1.1)';
+});
+
+waButton.addEventListener('mouseout', () => {
+  waButton.style.transform = 'scale(1)';
+});
+
+document.body.appendChild(waButton);
