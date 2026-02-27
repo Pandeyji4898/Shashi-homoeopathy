@@ -65,6 +65,7 @@ window.addEventListener('resize', () => {
 });
 
 // ===== SERVICE CARDS ANIMATION =====
+// ===== SERVICE CARDS ANIMATION =====
 const cards = document.querySelectorAll('.service-card');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -78,6 +79,16 @@ const observer = new IntersectionObserver((entries) => {
 cards.forEach(card => {
   card.style.opacity = '0';
   card.style.transform = 'translateY(20px)';
-  card.style.transition = 'all 0.5s ease';
+  card.style.transition = 'all 0.6s ease';
   observer.observe(card);
+});
+
+// Fallback — show cards after 1 second if observer fails
+setTimeout(() => {
+  cards.forEach(card => {
+    card.style.opacity = '1';
+    card.style.transform = 'translateY(0)';
+  });
+}, 1000);
+
 });
