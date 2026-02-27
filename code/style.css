@@ -888,5 +888,169 @@ footer {
   margin-top: 5px;
 }
 
+/* ===== PARTICLES ANIMATION ===== */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% { opacity: 0.1; }
+  90% { opacity: 0.1; }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+/* ===== SYMPTOM CHECKER ===== */
+.symptom-section {
+  padding: 60px 30px;
+  max-width: 700px;
+  margin: auto;
+}
+
+.quiz-progress {
+  height: 6px;
+  background: #f0d0ce;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.quiz-progress-bar {
+  height: 100%;
+  background: #c0392b;
+  border-radius: 10px;
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+.quiz-step {
+  display: none;
+}
+
+.quiz-step.active {
+  display: block;
+  animation: fadeInUp 0.4s ease;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.quiz-step h2 {
+  color: #c0392b;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.quiz-step > p {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.quiz-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.quiz-options button {
+  background: #fff;
+  border: 2px solid #f0d0ce;
+  border-radius: 12px;
+  padding: 18px 15px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: left;
+}
+
+.quiz-options button:hover {
+  border-color: #c0392b;
+  background: #fdf2f2;
+  transform: translateY(-3px);
+}
+
+.quiz-options button.selected {
+  background: #c0392b;
+  color: #fff;
+  border-color: #c0392b;
+}
+
+/* ===== RESULT ===== */
+.result-box {
+  text-align: center;
+}
+
+.result-box h2 {
+  font-size: 1.8rem;
+  color: #c0392b;
+  margin-bottom: 25px;
+}
+
+.result-condition {
+  background: #fdf2f2;
+  border-radius: 15px;
+  padding: 25px;
+  text-align: left;
+  margin-bottom: 25px;
+}
+
+.result-condition h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.result-condition p {
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+.result-recommendation {
+  background: #fff;
+  border-left: 4px solid #c0392b;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.result-recommendation h4 {
+  color: #c0392b;
+  margin-bottom: 8px;
+}
+
+.result-stats {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.result-stat {
+  background: #c0392b;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.result-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+
+
+
 
 

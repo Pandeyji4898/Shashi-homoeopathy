@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Symptom Checker | Shashi Homoeopathy</title>
+  <meta name="description" content="Check your symptoms and find the right homoeopathic treatment at Shashi Homoeopathy Lucknow."/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="image/logo.png"/>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <img src="image/logo.png" alt="Shashi Homoeopathy Logo" class="logo"/>
+      <div class="clinic-name">
+        <h1>Shashi Homoeopathy</h1>
+        <p>A Solid Foundation For Your Health</p>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="appointment.html">Appointment</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PAGE BANNER -->
+  <section class="page-banner">
+    <h2>Symptom Checker</h2>
+    <p>Find out which condition you might have!</p>
+  </section>
+
+  <!-- SYMPTOM CHECKER -->
+  <section class="symptom-section">
+    <div class="symptom-inner">
+
+      <div class="quiz-container" id="quiz">
+
+        <!-- STEP 1 -->
+        <div class="quiz-step active" id="step1">
+          <h2>Step 1 of 3</h2>
+          <p>Where is your main problem?</p>
+          <div class="quiz-options">
+            <button onclick="selectOption('area', 'skin', this)">🌿 Skin & Hair</button>
+            <button onclick="selectOption('area', 'stomach', this)">💊 Stomach & Digestion</button>
+            <button onclick="selectOption('area', 'mental', this)">🧠 Mind & Mental Health</button>
+            <button onclick="selectOption('area', 'female', this)">👩 Female Health</button>
+            <button onclick="selectOption('area', 'joints', this)">🦴 Bones & Joints</button>
+            <button onclick="selectOption('area', 'general', this)">❤️ General / Other</button>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="quiz-step" id="step2">
+          <h2>Step 2 of 3</h2>
+          <p>How long have you had this problem?</p>
+          <div class="quiz-options">
+            <button onclick="selectOption('duration', 'acute', this)">⚡ Less than 1 week</button>
+            <button onclick="selectOption('duration', 'subacute', this)">📅 1 week — 1 month</button>
+            <button onclick="selectOption('duration', 'chronic', this)">📆 More than 1 month</button>
+            <button onclick="selectOption('duration', 'years', this)">🗓️ More than 1 year</button>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="quiz-step" id="step3">
+          <h2>Step 3 of 3</h2>
+          <p>Have you tried any treatment before?</p>
+          <div class="quiz-options">
+            <button onclick="selectOption('treatment', 'none', this)">❌ No treatment yet</button>
+            <button onclick="selectOption('treatment', 'allopathy', this)">💊 Allopathy only</button>
+            <button onclick="selectOption('treatment', 'both', this)">🔄 Multiple treatments</button>
+            <button onclick="selectOption('treatment', 'homeo', this)">🌿 Tried Homoeopathy before</button>
+          </div>
+        </div>
+
+        <!-- RESULT -->
+        <div class="quiz-step" id="result">
+          <div class="result-box">
+            <h2>🎯 Your Result</h2>
+            <div id="result-text"></div>
+            <div class="result-actions">
+              <a href="appointment.html" class="btn">Book Appointment Now</a>
+              <button class="btn btn-outline" onclick="resetQuiz()">Try Again</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PROGRESS BAR -->
+      <div class="quiz-progress">
+        <div class="quiz-progress-bar" id="quizProgress"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT STRIP -->
+  <section class="contact-strip">
+    <p>📍 Chhoti Nahar, Bhola Khera, Manas Nagar, Lucknow</p>
+    <p>📞 <a href="tel:8887222470">8887222470</a> | <a href="tel:9179462348">9179462348</a></p>
+    <p>🕐 10:30 AM - 2:00 PM & 5:30 PM - 9:00 PM</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Shashi Homoeopathy | Dr. Vikas Rai | Lucknow</p>
+    <p>Email: shashihomoeopathy@gmail.com</p>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    const answers = {};
+    let currentStep = 1;
+
+    function selectOption(key, value, btn) {
+      // Highlight selected
+      btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      answers[key] = value;
+
+      setTimeout(() => {
+        currentStep++;
+        if (currentStep <= 3) {
+          showStep(currentStep);
+        } else {
+          showResult();
+        }
+        updateProgress();
+      }, 400);
+    }
+
+    function showStep(step) {
+      document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+      document.getElementById('step' + step).classList.add('active');
+    }
+
+    function updateProgress() {
+      const progress = ((currentStep - 1) / 3) * 100;
+      document.getElementById('quizProgress').style.width = progress + '%';
+    }
+
+    function showResult() {
+      document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+      document.getElementById('result').classList.add('active');
+      document.getElementById('quizProgress').style.width = '100%';
+
+      const area = answers.area;
+      const duration = answers.duration;
+
+      let resultHTML = '';
+
+      const conditions = {
+        skin: { name: 'Skin & Hair Condition', desc: 'Based on your symptoms, you may be suffering from a chronic skin or hair condition like acne, eczema, psoriasis or hair fall.', urgency: duration === 'years' ? 'high' : 'medium' },
+        stomach: { name: 'Gastric / Digestive Disorder', desc: 'You may be experiencing gastric issues like acidity, IBS, constipation or other digestive problems.', urgency: 'medium' },
+        mental: { name: 'Mental Health Concern', desc: 'You may be dealing with stress, anxiety, depression or OCD. Homoeopathy offers very effective and gentle treatment for mental health.', urgency: 'high' },
+        female: { name: 'Female Health Issue', desc: 'You may have PCOS, thyroid, menstrual problems or other female health concerns. Dr. Vikas Rai specializes in these conditions.', urgency: 'high' },
+        joints: { name: 'Bone & Joint Problem', desc: 'You may be suffering from arthritis, back pain or joint stiffness. Homoeopathy provides excellent relief for these conditions.', urgency: duration === 'years' ? 'high' : 'low' },
+        general: { name: 'General Health Condition', desc: 'You may have diabetes, thyroid, hypertension or other general health conditions that respond very well to homoeopathic treatment.', urgency: 'medium' }
+      };
+
+      const condition = conditions[area] || conditions.general;
+      const urgencyColor = condition.urgency === 'high' ? '#c0392b' : condition.urgency === 'medium' ? '#e67e22' : '#27ae60';
+
+      resultHTML = `
+        <div class="result-condition">
+          <h3 style="color: ${urgencyColor}">Possible Condition: ${condition.name}</h3>
+          <p>${condition.desc}</p>
+          <div class="result-recommendation">
+            <h4>💡 Our Recommendation</h4>
+            <p>Based on your answers, we recommend consulting Dr. Vikas Rai at Shashi Homoeopathy for a detailed evaluation. Homoeopathic treatment can help you achieve <strong>permanent relief from the root cause!</strong></p>
+          </div>
+          <div class="result-stats">
+            <div class="result-stat">✅ Safe & Natural</div>
+            <div class="result-stat">🎯 Root Cause Treatment</div>
+            <div class="result-stat">💰 ₹350 Consultation</div>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('result-text').innerHTML = resultHTML;
+    }
+
+    function resetQuiz() {
+      currentStep = 1;
+      Object.keys(answers).forEach(k => delete answers[k]);
+      document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+      document.getElementById('step1').classList.add('active');
+      document.querySelectorAll('.quiz-options button').forEach(b => b.classList.remove('selected'));
+      document.getElementById('quizProgress').style.width = '0%';
+    }
+  </script>
+
+</body>
+</html>
+

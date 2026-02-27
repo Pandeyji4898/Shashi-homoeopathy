@@ -206,3 +206,62 @@ waButton.addEventListener('mouseout', () => {
 });
 
 document.body.appendChild(waButton);
+
+
+// ===== SCROLL PROGRESS BAR =====
+const progressBar = document.createElement('div');
+progressBar.style.cssText = `
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0%;
+  background: linear-gradient(to right, #c0392b, #e74c3c, #f39c12);
+  z-index: 99999;
+  transition: width 0.1s ease;
+`;
+document.body.appendChild(progressBar);
+
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = (scrollTop / docHeight) * 100;
+  progressBar.style.width = progress + '%';
+});
+
+// ===== FLOATING PARTICLES =====
+const hero = document.querySelector('.hero');
+if (hero) {
+  hero.style.position = 'relative';
+  hero.style.overflow = 'hidden';
+
+  for (let i = 0; i < 15; i++) {
+    const particle = document.createElement('div');
+    const size = Math.random() * 20 + 10;
+    const left = Math.random() * 100;
+    const duration = Math.random() * 8 + 5;
+    const delay = Math.random() * 5;
+    const opacity = Math.random() * 0.15 + 0.05;
+
+    particle.style.cssText = `
+      position: absolute;
+      width: ${size}px;
+      height: ${size}px;
+      background: #c0392b;
+      border-radius: 50%;
+      left: ${left}%;
+      bottom: -${size}px;
+      opacity: ${opacity};
+      animation: floatUp ${duration}s ${delay}s infinite ease-in;
+      pointer-events: none;
+      z-index: 0;
+    `;
+    hero.appendChild(particle);
+  }
+
+  // Make hero content appear above particles
+  const heroText = document.querySelector('.hero-text');
+  const heroImg = document.querySelector('.hero-img');
+  if (heroText) heroText.style.position = 'relative';
+  if (heroImg) heroImg.style.position = 'relative';
+}
