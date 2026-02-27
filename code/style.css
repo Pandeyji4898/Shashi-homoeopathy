@@ -276,3 +276,182 @@ footer {
     font-size: 1.5rem;
   }
 }
+
+/* ===== PAGE BANNER ===== */
+.page-banner {
+  background: #c0392b;
+  color: #fff;
+  text-align: center;
+  padding: 50px 30px;
+}
+
+.page-banner h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.page-banner p {
+  font-size: 1rem;
+  color: #f9d5d3;
+}
+
+/* ===== DOCTOR INTRO ===== */
+.doctor-intro {
+  padding: 60px 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.doctor-intro-inner {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.doctor-photo {
+  flex: 1;
+  min-width: 250px;
+  text-align: center;
+}
+
+.doctor-photo img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(192,57,43,0.2);
+}
+
+.doctor-info {
+  flex: 2;
+  min-width: 280px;
+}
+
+.doctor-info h2 {
+  font-size: 1.8rem;
+  color: #c0392b;
+  margin-bottom: 10px;
+}
+
+.designation {
+  color: #888;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.experience {
+  color: #c0392b;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.doctor-info p {
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+.doctor-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.highlight {
+  background: #fdf2f2;
+  border-left: 4px solid #c0392b;
+  padding: 12px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+/* ===== CLINIC STORY ===== */
+.clinic-story {
+  background: #fdf2f2;
+  padding: 60px 30px;
+  text-align: center;
+}
+
+.clinic-story h2 {
+  font-size: 1.8rem;
+  color: #c0392b;
+  margin-bottom: 20px;
+}
+
+.clinic-story p {
+  max-width: 800px;
+  margin: auto auto 15px;
+  color: #555;
+  line-height: 1.8;
+}
+
+/* ===== CERTIFICATES ===== */
+.certificates {
+  padding: 60px 30px;
+  text-align: center;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.certificates h2 {
+  font-size: 1.8rem;
+  color: #c0392b;
+  margin-bottom: 30px;
+}
+
+.cert-img img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* ===== CLINIC PHOTOS ===== */
+.clinic-photos {
+  padding: 60px 30px;
+  text-align: center;
+  background: #fdf2f2;
+}
+
+.clinic-photos h2 {
+  font-size: 1.8rem;
+  color: #c0392b;
+  margin-bottom: 30px;
+}
+
+.photos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.photos-grid img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  height: 250px;
+  object-fit: cover;
+}
+
+/* ===== CTA SECTION ===== */
+.cta-section {
+  padding: 60px 30px;
+  text-align: center;
+  background: #fff;
+}
+
+.cta-section h2 {
+  font-size: 1.8rem;
+  color: #c0392b;
+  margin-bottom: 15px;
+}
+
+.cta-section p {
+  color: #555;
+  margin-bottom: 25px;
+}
+
