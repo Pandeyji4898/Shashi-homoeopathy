@@ -455,3 +455,122 @@ footer {
   margin-bottom: 25px;
 }
 
+
+/* ===== CONTACT PAGE ===== */
+.contact-main {
+  padding: 60px 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.contact-main-inner {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.contact-details {
+  flex: 1;
+  min-width: 280px;
+}
+
+.contact-details h2 {
+  font-size: 1.8rem;
+  color: #c0392b;
+  margin-bottom: 25px;
+}
+
+.contact-item {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  align-items: flex-start;
+}
+
+.contact-icon {
+  font-size: 1.8rem;
+}
+
+.contact-item h3 {
+  color: #c0392b;
+  margin-bottom: 5px;
+  font-size: 1rem;
+}
+
+.contact-item p {
+  color: #555;
+  line-height: 1.8;
+}
+
+.contact-item a {
+  color: #c0392b;
+  font-weight: 600;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+}
+
+.whatsapp-btn {
+  background: #25D366;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.whatsapp-btn:hover {
+  background: #1da851;
+}
+
+.contact-map {
+  flex: 1;
+  min-width: 280px;
+}
+
+.contact-map h2 {
+  font-size: 1.8rem;
+  color: #c0392b;
+  margin-bottom: 20px;
+}
+
+/* ===== CONTACT FORM ===== */
+.contact-form-section {
+  background: #fdf2f2;
+  padding: 60px 30px;
+  text-align: center;
+}
+
+.contact-form-section h2 {
+  font-size: 1.8rem;
+  color: #c0392b;
+  margin-bottom: 10px;
+}
+
+.contact-form-section p {
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 15px;
+  border: 2px solid #f0d0ce;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #c0392b;
+}
+

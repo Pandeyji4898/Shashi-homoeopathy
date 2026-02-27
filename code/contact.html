@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us | Shashi Homoeopathy Lucknow</title>
+  <meta name="description" content="Contact Shashi Homoeopathy clinic in Lucknow. Call Dr. Vikas Rai at 8887222470. Located at Chhoti Nahar, Bhola Khera, Manas Nagar, Lucknow."/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="image/logo.png"/>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <img src="image/logo.png" alt="Shashi Homoeopathy Logo" class="logo"/>
+      <div class="clinic-name">
+        <h1>Shashi Homoeopathy</h1>
+        <p>A Solid Foundation For Your Health</p>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="appointment.html">Appointment</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PAGE BANNER -->
+  <section class="page-banner">
+    <h2>Contact Us</h2>
+    <p>We'd love to hear from you!</p>
+  </section>
+
+  <!-- CONTACT INFO + MAP -->
+  <section class="contact-main">
+    <div class="contact-main-inner">
+
+      <!-- LEFT — CONTACT DETAILS -->
+      <div class="contact-details">
+        <h2>Get In Touch</h2>
+
+        <div class="contact-item">
+          <span class="contact-icon">📍</span>
+          <div>
+            <h3>Address</h3>
+            <p>Chhoti Nahar, Bhola Khera, Manas Nagar,<br/>Lucknow, Uttar Pradesh — 226023</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-icon">📞</span>
+          <div>
+            <h3>Phone / WhatsApp</h3>
+            <p><a href="tel:8887222470">8887222470</a></p>
+            <p><a href="tel:9179462348">9179462348</a></p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-icon">📧</span>
+          <div>
+            <h3>Email</h3>
+            <p><a href="mailto:shashihomoeopathy@gmail.com">shashihomoeopathy@gmail.com</a></p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-icon">🕐</span>
+          <div>
+            <h3>Clinic Timings</h3>
+            <p>Morning: 10:30 AM — 2:00 PM</p>
+            <p>Evening: 5:30 PM — 9:00 PM</p>
+            <p>Monday to Saturday</p>
+          </div>
+        </div>
+
+        <!-- WHATSAPP BUTTON -->
+        <a href="https://wa.me/918887222470" class="btn whatsapp-btn" target="_blank">
+          💬 Chat on WhatsApp
+        </a>
+
+      </div>
+
+      <!-- RIGHT — GOOGLE MAP -->
+      <div class="contact-map">
+        <h2>Find Us Here</h2>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.5!2d80.9!3d26.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDQ4JzAwLjAiTiA4MMKwNTQnMDAuMCJF!5e0!3m2!1sen!2sin!4v1234567890"
+          width="100%"
+          height="400"
+          style="border:0; border-radius:15px;"
+          allowfullscreen=""
+          loading="lazy">
+        </iframe>
+        <p style="margin-top:15px; color:#888; font-size:0.9rem;">
+          📍 Chhoti Nahar, Bhola Khera, Manas Nagar, Lucknow
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT FORM -->
+  <section class="contact-form-section">
+    <h2>Send Us a Message</h2>
+    <p>Have a question? Fill the form below and we'll get back to you!</p>
+    <div class="contact-form">
+      <input type="text" placeholder="Your Full Name" id="name"/>
+      <input type="tel" placeholder="Your Phone Number" id="phone"/>
+      <input type="email" placeholder="Your Email (optional)" id="email"/>
+      <textarea placeholder="Your Message or Query" id="message" rows="5"></textarea>
+      <button class="btn" onclick="sendWhatsApp()">Send via WhatsApp 💬</button>
+    </div>
+  </section>
+
+  <!-- CONTACT STRIP -->
+  <section class="contact-strip">
+    <p>📍 Chhoti Nahar, Bhola Khera, Manas Nagar, Lucknow</p>
+    <p>📞 <a href="tel:8887222470">8887222470</a> | <a href="tel:9179462348">9179462348</a></p>
+    <p>🕐 10:30 AM - 2:00 PM & 5:30 PM - 9:00 PM</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Shashi Homoeopathy | Dr. Vikas Rai | Lucknow</p>
+    <p>Email: shashihomoeopathy@gmail.com</p>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    function sendWhatsApp() {
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const message = document.getElementById('message').value;
+      if (!name || !phone) {
+        alert('Please enter your name and phone number!');
+        return;
+      }
+      const text = `Hello Dr. Vikas Rai,\n\nName: ${name}\nPhone: ${phone}\nMessage: ${message}`;
+      const url = `https://wa.me/918887222470?text=${encodeURIComponent(text)}`;
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
